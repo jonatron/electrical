@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minor Electrical Installation Works Certificate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #003366;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+
+        .section-title {
+            background: #003366;
+            color: white;
+            padding: 10px 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 4px 4px 0 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .inline-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .inline-group .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .small-input {
+            max-width: 150px;
+        }
+
+        .medium-input {
+            max-width: 300px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: #003366;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #002244;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .button-group {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .inline-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MINOR ELECTRICAL INSTALLATION WORKS CERTIFICATE</h1>
+            <div class="subtitle">BS 7671:2018+A2:2022</div>
+            <div class="subtitle">(REQUIREMENTS FOR ELECTRICAL INSTALLATIONS - BS 7671)</div>
+        </div>
+
+        <div class="warning">
+            <strong>Important:</strong> To be used only for minor electrical work which does not include the provision of a new circuit
+        </div>
+
+        <form id="meiwc-form">
+            <!-- PART 1: Description of the minor works -->
+            <div class="section">
+                <div class="section-title">PART 1: Description of the Minor Works</div>
+                
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="client">1. Details of the Client</label>
+                        <input type="text" id="client" name="client">
+                    </div>
+                    <div class="form-group">
+                        <label for="date-completed">Date minor works completed</label>
+                        <input type="date" id="date-completed" name="date-completed">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">2. Installation location/address</label>
+                    <textarea id="location" name="location" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">3. Description of the minor works</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="departures">4. Details of any departures from BS 7671:2018 as amended to (date) for the circuit altered or extended</label>
+                    <textarea id="departures" name="departures" rows="3"></textarea>
+                    <div class="checkbox-item" style="margin-top: 10px;">
+                        <input type="checkbox" id="risk-assessment" name="risk-assessment">
+                        <label for="risk-assessment">Risk assessment attached</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">5. Comments on (including any defects observed in) the existing installation (Regulation 644.1.2)</label>
+                    <textarea id="comments" name="comments" rows="3"></textarea>
+                </div>
+            </div>
+
+            <!-- PART 2: Presence and adequacy of installation earthing and bonding arrangements -->
+            <div class="section">
+                <div class="section-title">PART 2: Presence and Adequacy of Installation Earthing and Bonding Arrangements</div>
+                
+                <div class="form-group">
+                    <label>1. System earthing arrangement</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="radio" id="tn-s" name="earthing" value="TN-S">
+                            <label for="tn-s">TN-S</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tn-c-s" name="earthing" value="TN-C-S">
+                            <label for="tn-c-s">TN-C-S</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tt" name="earthing" value="TT">
+                            <label for="tt">TT</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="zdb">2. Earth fault loop impedance at distribution board (Zdb) supplying the final circuit (Ω)</label>
+                    <input type="number" id="zdb" name="zdb" step="0.01" class="medium-input">
+                </div>
+
+                <div class="form-group">
+                    <label>3. Presence of adequate main protective conductors</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="earthing-conductor" name="earthing-conductor">
+                            <label for="earthing-conductor">Earthing conductor</label>
+                        </div>
+                    </div>
+                    <label style="margin-top: 15px;">Main protective bonding conductor(s) to:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="water" name="water">
+                            <label for="water">Water</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="gas" name="gas">
+                            <label for="gas">Gas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="oil" name="oil">
+                            <label for="oil">Oil</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="structural-steel" name="structural-steel">
+                            <label for="structural-steel">Structural steel</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="other-bonding" name="other-bonding">
+                            <label for="other-bonding">Other (Specify):</label>
+                            <input type="text" id="other-bonding-specify" name="other-bonding-specify" style="width: 200px; margin-left: 5px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 3: Circuit details -->
+            <div class="section">
+                <div class="section-title">PART 3: Circuit Details</div>
+                
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="db-ref">DB Reference No.</label>
+                        <input type="text" id="db-ref" name="db-ref">
+                    </div>
+                    <div class="form-group">
+                        <label for="db-location">DB Location and type</label>
+                        <input type="text" id="db-location" name="db-location">
+                    </div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="circuit-no">Circuit No.</label>
+                        <input type="text" id="circuit-no" name="circuit-no">
+                    </div>
+                    <div class="form-group">
+                        <label for="circuit-desc">Circuit description</label>
+                        <input type="text" id="circuit-desc" name="circuit-desc">
+                    </div>
+                    <div class="form-group">
+                        <label for="install-method">Installation reference method</label>
+                        <input type="text" id="install-method" name="install-method">
+                    </div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="conductor-live">Number & size of conductors: Live (mm²)</label>
+                        <input type="text" id="conductor-live" name="conductor-live">
+                    </div>
+                    <div class="form-group">
+                        <label for="conductor-cpc">cpc (mm²)</label>
+                        <input type="text" id="conductor-cpc" name="conductor-cpc">
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label for="ocpd-bs">Circuit overcurrent protective device: BS (EN)</label>
+                        <input type="text" id="ocpd-bs" name="ocpd-bs">
+                    </div>
+                    <div class="form-group">
+                        <label for="ocpd-type">Type</label>
+                        <input type="text" id="ocpd-type" name="ocpd-type">
+                    </div>
+                    <div class="form-group">
+                        <label for="ocpd-rating">Rating (A)</label>
+                        <input type="number" id="ocpd-rating" name="ocpd-rating">
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label for="rcd-bs">RCD: BS (EN)</label>
+                        <input type="text" id="rcd-bs" name="rcd-bs">
+                    </div>
+                    <div class="form-group">
+                        <label for="rcd-type">Type</label>
+                        <input type="text" id="rcd-type" name="rcd-type">
+                    </div>
+                    <div class="form-group">
+                        <label for="rcd-rating">Rating (A)</label>
+                        <input type="number" id="rcd-rating" name="rcd-rating">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rcd-current">Rated residual operating current (IΔn) (mA)</label>
+                    <input type="number" id="rcd-current" name="rcd-current" class="medium-input">
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="afdd-bs">AFDD: BS (EN)</label>
+                        <input type="text" id="afdd-bs" name="afdd-bs">
+                    </div>
+                    <div class="form-group">
+                        <label for="afdd-rating">Rating (A)</label>
+                        <input type="number" id="afdd-rating" name="afdd-rating">
+                    </div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="spd-bs">SPD: BS (EN)</label>
+                        <input type="text" id="spd-bs" name="spd-bs">
+                    </div>
+                    <div class="form-group">
+                        <label for="spd-type">Type</label>
+                        <input type="text" id="spd-type" name="spd-type">
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 4: Test results -->
+            <div class="section">
+                <div class="section-title">PART 4: Test Results for the Altered or Extended Circuit</div>
+                
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="r1-r2">Protective conductor continuity: (R1+R2) (Ω)</label>
+                        <input type="number" id="r1-r2" name="r1-r2" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="r2">or R2 (Ω)</label>
+                        <input type="number" id="r2" name="r2" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Continuity of ring final circuit conductors (Ω)</label>
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label for="ring-l">L/L</label>
+                            <input type="number" id="ring-l" name="ring-l" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="ring-n">N/N</label>
+                            <input type="number" id="ring-n" name="ring-n" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="ring-cpc">cpc/cpc</label>
+                            <input type="number" id="ring-cpc" name="ring-cpc" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Insulation resistance</label>
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label for="test-voltage">Test voltage (V)</label>
+                            <input type="number" id="test-voltage" name="test-voltage">
+                        </div>
+                        <div class="form-group">
+                            <label for="ir-live-live">Live - Live (MΩ)</label>
+                            <input type="number" id="ir-live-live" name="ir-live-live" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="ir-live-earth">Live - Earth (MΩ)</label>
+                            <input type="number" id="ir-live-earth" name="ir-live-earth" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="polarity">Polarity satisfactory</label>
+                        <select id="polarity" name="polarity">
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="zs">Maximum measured earth fault loop impedance: Zs (Ω)</label>
+                        <input type="number" id="zs" name="zs" step="0.01">
+                    </div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="rcd-time">RCD disconnection time at rated residual operating current (IΔn) (ms)</label>
+                        <input type="number" id="rcd-time" name="rcd-time" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="rcd-test-button">Satisfactory test button operation</label>
+                        <select id="rcd-test-button" name="rcd-test-button">
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="na">N/A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="afdd-test">AFDD satisfactory test button operation</label>
+                    <select id="afdd-test" name="afdd-test" class="medium-input">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="na">N/A</option>
+                    </select>
+                    <div class="note">NOTE: Not all AFDDs have a test button</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="spd-confirmed">SPD functionality confirmed</label>
+                    <select id="spd-confirmed" name="spd-confirmed" class="medium-input">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="na">N/A</option>
+                    </select>
+                    <div class="note">NOTE: Not all SPDs have visible functionality indication</div>
+                </div>
+            </div>
+
+            <!-- PART 5: Declaration -->
+            <div class="section">
+                <div class="section-title">PART 5: Declaration</div>
+                
+                <p style="margin-bottom: 20px; font-size: 14px;">
+                    I certify that the work covered by this certificate does not impair the safety of the existing installation and the work has been designed, constructed, inspected and tested in accordance with BS 7671:2018 amended to <input type="text" id="bs-date" name="bs-date" style="width: 150px; display: inline-block;"> (date) and that to the best of my knowledge and belief, at the time of my inspection, complied with BS 7671 except as detailed in Part 1 above.
+                </p>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" id="position" name="position">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">For and on behalf of</label>
+                    <input type="text" id="company" name="company">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="4"></textarea>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group">
+                        <label for="signature">Signature</label>
+                        <input type="text" id="signature" name="signature" placeholder="Type name or use digital signature">
+                    </div>
+                    <div class="form-group">
+                        <label for="cert-date">Date</label>
+                        <input type="date" id="cert-date" name="cert-date">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cert-no">Certificate No.</label>
+                    <input type="text" id="cert-no" name="cert-no" class="medium-input">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" onclick="window.print()">Print Certificate</button>
+                <button type="button" class="btn-primary" onclick="saveForm()">Save as PDF</button>
+                <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function saveForm() {
+            // Save form data to localStorage
+            const formData = new FormData(document.getElementById('meiwc-form'));
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            localStorage.setItem('meiwc-form-data', JSON.stringify(data));
+            alert('Form data saved! Use your browser\'s print function and "Save as PDF" to create a PDF file.');
+            window.print();
+        }
+
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all form data?')) {
+                document.getElementById('meiwc-form').reset();
+                localStorage.removeItem('meiwc-form-data');
+            }
+        }
+
+        // Load saved form data on page load
+        window.addEventListener('load', function() {
+            const savedData = localStorage.getItem('meiwc-form-data');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                for (let key in data) {
+                    const element = document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'checkbox' || element.type === 'radio') {
+                            element.checked = data[key] === element.value || data[key] === 'on';
+                        } else {
+                            element.value = data[key];
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
