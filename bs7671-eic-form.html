@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS 7671:2018+A2:2022 - Electrical Installation Certificate</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --warning: #f39c12;
+            --success: #27ae60;
+            --bg: #f8f9fa;
+            --text: #2c3e50;
+            --border: #dce1e8;
+            --input-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cert-number label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-number input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+            width: 150px;
+        }
+
+        .cert-number input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-section {
+            padding: 2.5rem 2rem;
+            border-bottom: 2px solid var(--border);
+            animation: fadeIn 0.8s ease-out backwards;
+        }
+
+        .form-section:nth-child(2) { animation-delay: 0.1s; }
+        .form-section:nth-child(3) { animation-delay: 0.2s; }
+        .form-section:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Crimson Pro', serif;
+            transition: all 0.3s ease;
+            background: var(--input-bg);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .signature-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .signature-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .signature-box h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: #856404;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .info-box p {
+            color: #856404;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .supply-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .radio-item:hover {
+            background: rgba(233, 69, 96, 0.05);
+        }
+
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .radio-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            padding: 2rem;
+            background: var(--bg);
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #d93550 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .schedule-info {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .schedule-info h4 {
+            color: #155724;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .schedule-info p {
+            color: #155724;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .cert-number {
+                position: static;
+                margin-top: 1.5rem;
+            }
+
+            .form-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signature-section {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .print-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.3);
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 26, 46, 0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .button-group {
+                display: none;
+            }
+
+            .form-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Electrical Installation Certificate</h1>
+            <div class="subtitle">Requirements for Electrical Installations - BS 7671:2018+A2:2022</div>
+            <div class="cert-number">
+                <label>Certificate No.</label>
+                <input type="text" placeholder="Enter number">
+            </div>
+        </div>
+
+        <!-- Client and Installation Details -->
+        <div class="form-section">
+            <h2 class="section-title">Client & Installation Details</h2>
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="client-name">Details of the Client</label>
+                    <input type="text" id="client-name" placeholder="Enter client name">
+                </div>
+                <div class="form-group full-width">
+                    <label for="install-address">Installation Address</label>
+                    <textarea id="install-address" placeholder="Enter complete installation address"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description and Extent -->
+        <div class="form-section">
+            <h2 class="section-title">Description & Extent of Installation</h2>
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="install-desc">Description of Installation</label>
+                    <input type="text" id="install-desc" placeholder="Describe the installation">
+                </div>
+                <div class="form-group full-width">
+                    <label for="install-extent">Extent of Installation Covered by this Certificate</label>
+                    <textarea id="install-extent" placeholder="Specify the extent of work covered"></textarea>
+                </div>
+            </div>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="new-install">
+                    <label for="new-install">New Installation</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="addition">
+                    <label for="addition">Addition to an Existing Installation</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="alteration">
+                    <label for="alteration">Alteration to an Existing Installation</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design Certification -->
+        <div class="form-section">
+            <h2 class="section-title">For Design</h2>
+            <div class="info-box">
+                <h4>Design Certification</h4>
+                <p>I/We, being the person(s) responsible for the design of the electrical installation, having exercised reasonable skill and care when carrying out the design, hereby CERTIFY that the design work for which I/we have been responsible is to the best of my/our knowledge and belief in accordance with BS 7671:2018.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="design-departures">Details of Departures from BS 7671 (Regulations 120.3, 133.1.3 and 133.5)</label>
+                <textarea id="design-departures" placeholder="Enter any departures from BS 7671, or write 'None'"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="permitted-exceptions">Details of Permitted Exceptions (Regulation 411.3.3)</label>
+                <textarea id="permitted-exceptions" placeholder="Enter any permitted exceptions"></textarea>
+            </div>
+
+            <div class="checkbox-item">
+                <input type="checkbox" id="risk-assessment">
+                <label for="risk-assessment">Risk Assessment Attached</label>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <h4>Designer No. 1</h4>
+                    <div class="form-group">
+                        <label>Name (IN BLOCK CAPITALS)</label>
+                        <input type="text" placeholder="Designer name">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Signature</label>
+                        <input type="text" placeholder="Signature">
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <h4>Designer No. 2 (if applicable)</h4>
+                    <div class="form-group">
+                        <label>Name (IN BLOCK CAPITALS)</label>
+                        <input type="text" placeholder="Designer name">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Signature</label>
+                        <input type="text" placeholder="Signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Construction Certification -->
+        <div class="form-section">
+            <h2 class="section-title">For Construction</h2>
+            <div class="info-box">
+                <h4>Construction Certification</h4>
+                <p>I, being the person responsible for the construction of the electrical installation, having exercised reasonable skill and care when carrying out the construction, hereby CERTIFY that the construction work for which I have been responsible is to the best of my knowledge and belief in accordance with BS 7671:2018.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="construction-departures">Details of Departures from BS 7671 (Regulations 120.3 and 133.5)</label>
+                <textarea id="construction-departures" placeholder="Enter any departures from BS 7671, or write 'None'"></textarea>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <h4>Constructor</h4>
+                    <div class="form-group">
+                        <label>Name (IN BLOCK CAPITALS)</label>
+                        <input type="text" placeholder="Constructor name">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Signature</label>
+                        <input type="text" placeholder="Signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inspection and Testing Certification -->
+        <div class="form-section">
+            <h2 class="section-title">For Inspection & Testing</h2>
+            <div class="info-box">
+                <h4>Inspection & Testing Certification</h4>
+                <p>I, being the person responsible for the inspection & testing of the electrical installation, having exercised reasonable skill and care when carrying out the inspection & testing, hereby CERTIFY that the work for which I have been responsible is to the best of my knowledge and belief in accordance with BS 7671:2018.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="testing-departures">Details of Departures from BS 7671 (Regulations 120.3 and 133.5)</label>
+                <textarea id="testing-departures" placeholder="Enter any departures from BS 7671, or write 'None'"></textarea>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <h4>Inspector</h4>
+                    <div class="form-group">
+                        <label>Name (IN BLOCK CAPITALS)</label>
+                        <input type="text" placeholder="Inspector name">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Signature</label>
+                        <input type="text" placeholder="Signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Inspection -->
+        <div class="form-section">
+            <h2 class="section-title">Next Inspection</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="next-inspection">I/We recommend that this installation is further inspected and tested after an interval of not more than</label>
+                    <input type="text" id="next-inspection" placeholder="e.g., 5 years or 12 months">
+                </div>
+            </div>
+        </div>
+
+        <!-- Supply Characteristics -->
+        <div class="form-section">
+            <h2 class="section-title">Supply Characteristics & Earthing Arrangements</h2>
+            
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600;">Earthing Arrangements</h3>
+            <div class="supply-grid">
+                <div class="radio-group">
+                    <label style="font-weight: 700; margin-bottom: 0.5rem;">Type:</label>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing" id="tn-c">
+                        <label for="tn-c">TN-C</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing" id="tn-s">
+                        <label for="tn-s">TN-S</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing" id="tn-c-s">
+                        <label for="tn-c-s">TN-C-S</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing" id="tt">
+                        <label for="tt">TT</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing" id="it">
+                        <label for="it">IT</label>
+                    </div>
+                </div>
+
+                <div class="radio-group">
+                    <label style="font-weight: 700; margin-bottom: 0.5rem;">Means of Earthing:</label>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing-means" id="distributor">
+                        <label for="distributor">Distributor's Facility</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="earthing-means" id="electrode">
+                        <label for="electrode">Installation Earth Electrode</label>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Nature of Supply Parameters</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nominal Voltage (U / U₀)</label>
+                    <input type="text" placeholder="e.g., 230V">
+                </div>
+                <div class="form-group">
+                    <label>Nominal Frequency (f)</label>
+                    <input type="text" placeholder="e.g., 50Hz">
+                </div>
+                <div class="form-group">
+                    <label>Prospective Fault Current (Ipf)</label>
+                    <input type="text" placeholder="kA">
+                </div>
+                <div class="form-group">
+                    <label>External Earth Fault Loop Impedance (Ze)</label>
+                    <input type="text" placeholder="Ω">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Number and Type of Live Conductors</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="1phase">
+                    <label for="1phase">1-phase, 2-wire</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="2phase">
+                    <label for="2phase">2-phase, 3-wire</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="3phase3">
+                    <label for="3phase3">3-phase, 3-wire</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="3phase4">
+                    <label for="3phase4">3-phase, 4-wire</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ac">
+                    <label for="ac">AC</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dc2">
+                    <label for="dc2">DC 2-wire</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dc3">
+                    <label for="dc3">DC 3-wire</label>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Supply Protective Device</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>BS (EN)</label>
+                    <input type="text" placeholder="Enter standard">
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" placeholder="Device type">
+                </div>
+                <div class="form-group">
+                    <label>Rated Current (A)</label>
+                    <input type="number" placeholder="Amperes">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Installation Earth Electrode Details</h3>
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>Type (e.g., rod(s), tape, etc.)</label>
+                    <input type="text" placeholder="Electrode type">
+                </div>
+                <div class="form-group full-width">
+                    <label>Location</label>
+                    <input type="text" placeholder="Electrode location">
+                </div>
+                <div class="form-group">
+                    <label>Electrode Resistance to Earth</label>
+                    <input type="text" placeholder="Ω">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Main Protective Conductors</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Earthing Conductor - Material</label>
+                    <input type="text" placeholder="e.g., Copper">
+                </div>
+                <div class="form-group">
+                    <label>CSA (mm²)</label>
+                    <input type="text" placeholder="Cross-sectional area">
+                </div>
+                <div class="form-group">
+                    <label>Main Bonding Conductor - Material</label>
+                    <input type="text" placeholder="e.g., Copper">
+                </div>
+                <div class="form-group">
+                    <label>CSA (mm²)</label>
+                    <input type="text" placeholder="Cross-sectional area">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Main Protective Bonding Connections</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bond-water">
+                    <label for="bond-water">To Water Installation Pipes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bond-gas">
+                    <label for="bond-gas">To Gas Installation Pipes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bond-oil">
+                    <label for="bond-oil">To Oil Installation Pipes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bond-steel">
+                    <label for="bond-steel">To Structural Steel</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bond-lightning">
+                    <label for="bond-lightning">To Lightning Protection</label>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label>To Other (Specify)</label>
+                <input type="text" placeholder="Specify other bonding connections">
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Maximum Demand</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Maximum Demand (Load)</label>
+                    <input type="text" placeholder="e.g., 100 kVA or 200 Amps">
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Switch Details -->
+        <div class="form-section">
+            <h2 class="section-title">Main Switch / Circuit-Breaker / RCD</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" placeholder="Location of main switch">
+                </div>
+                <div class="form-group">
+                    <label>BS (EN)</label>
+                    <input type="text" placeholder="Standard">
+                </div>
+                <div class="form-group">
+                    <label>Number of Poles</label>
+                    <input type="number" placeholder="e.g., 2">
+                </div>
+                <div class="form-group">
+                    <label>Current Rating (A)</label>
+                    <input type="number" placeholder="Amperes">
+                </div>
+                <div class="form-group">
+                    <label>Fuse / Device Rating or Setting (A)</label>
+                    <input type="number" placeholder="Amperes">
+                </div>
+                <div class="form-group">
+                    <label>Voltage Rating (V)</label>
+                    <input type="number" placeholder="Volts">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">If RCD Main Switch</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>RCD Type</label>
+                    <input type="text" placeholder="e.g., Type A, Type AC">
+                </div>
+                <div class="form-group">
+                    <label>Rated Residual Operating Current (IΔn) - mA</label>
+                    <input type="number" placeholder="mA">
+                </div>
+                <div class="form-group">
+                    <label>Rated Time Delay (ms)</label>
+                    <input type="number" placeholder="Milliseconds">
+                </div>
+                <div class="form-group">
+                    <label>Measured Operating Time (ms)</label>
+                    <input type="number" placeholder="Milliseconds">
+                </div>
+            </div>
+        </div>
+
+        <!-- Particulars of Signatories -->
+        <div class="form-section">
+            <h2 class="section-title">Particulars of Signatories</h2>
+            
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Designer No. 1</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" placeholder="Company name">
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <textarea placeholder="Complete address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Postcode</label>
+                    <input type="text" placeholder="Postcode">
+                </div>
+                <div class="form-group">
+                    <label>Telephone Number</label>
+                    <input type="tel" placeholder="Phone number">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Designer No. 2 (if applicable)</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" placeholder="Company name">
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <textarea placeholder="Complete address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Postcode</label>
+                    <input type="text" placeholder="Postcode">
+                </div>
+                <div class="form-group">
+                    <label>Telephone Number</label>
+                    <input type="tel" placeholder="Phone number">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Constructor</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" placeholder="Company name">
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <textarea placeholder="Complete address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Postcode</label>
+                    <input type="text" placeholder="Postcode">
+                </div>
+                <div class="form-group">
+                    <label>Telephone Number</label>
+                    <input type="tel" placeholder="Phone number">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">Inspector</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" placeholder="Company name">
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <textarea placeholder="Complete address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Postcode</label>
+                    <input type="text" placeholder="Postcode">
+                </div>
+                <div class="form-group">
+                    <label>Telephone Number</label>
+                    <input type="tel" placeholder="Phone number">
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments on Existing Installation -->
+        <div class="form-section">
+            <h2 class="section-title">Comments on Existing Installation</h2>
+            <div class="info-box">
+                <h4>Note</h4>
+                <p>In the case of an addition or alteration, see Regulation 644.1.2</p>
+            </div>
+            <div class="form-group">
+                <label>Comments</label>
+                <textarea placeholder="Enter comments on the condition of the existing installation (if applicable)" style="min-height: 120px;"></textarea>
+            </div>
+        </div>
+
+        <!-- Schedule of Circuit Details -->
+        <div class="form-section">
+            <h2 class="section-title">Schedule of Circuit Details</h2>
+            
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Distribution Board Details</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>DB Reference</label>
+                    <input type="text" placeholder="e.g., DB1">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" placeholder="Board location">
+                </div>
+                <div class="form-group">
+                    <label>Supplied From</label>
+                    <input type="text" placeholder="Supply source">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600;">Distribution Circuit OCPD</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>BS (EN)</label>
+                    <input type="text" placeholder="Standard">
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" placeholder="Device type">
+                </div>
+                <div class="form-group">
+                    <label>Rating/Setting (A)</label>
+                    <input type="number" placeholder="Amperes">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600;">SPD Details</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-t1">
+                    <label for="spd-t1">Type T1</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-t2">
+                    <label for="spd-t2">Type T2</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-t3">
+                    <label for="spd-t3">Type T3</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-na">
+                    <label for="spd-na">N/A</label>
+                </div>
+            </div>
+
+            <div class="schedule-info" style="margin-top: 1.5rem;">
+                <h4>Circuit Details Table</h4>
+                <p>Use the table below to record circuit details. Add rows as needed for each circuit.</p>
+            </div>
+
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table id="circuitTable" style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: var(--primary); color: white;">
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 60px;">Circuit No.</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 150px;">Circuit Description</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 120px;">Type of Wiring</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 100px;">Reference Method</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 80px;">No. of Points</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 80px;">Live (mm²)</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 80px;">CPC (mm²)</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 100px;">OCPD BS(EN)</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 80px;">Type</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 80px;">Rating (A)</th>
+                            <th style="padding: 0.75rem; border: 1px solid var(--border); min-width: 60px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="circuitTableBody">
+                        <tr>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);">
+                                <select style="width: 100%; border: none; padding: 0.25rem;">
+                                    <option value="">Select...</option>
+                                    <option value="A">A - Thermoplastic insulated/sheathed</option>
+                                    <option value="B">B - Thermoplastic in non-metallic conduit</option>
+                                    <option value="C">C - Thermoplastic in non-metallic trunking</option>
+                                    <option value="D">D - Thermoplastic SWA cables</option>
+                                    <option value="E">E - Thermoplastic in metallic conduit</option>
+                                    <option value="F">F - Thermoplastic in metallic trunking</option>
+                                    <option value="G">G - Thermoplastic SWA cables</option>
+                                </select>
+                            </td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="number" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="number" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border); text-align: center;">
+                                <button type="button" onclick="deleteRow(this)" style="background: var(--accent); color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">✕</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" onclick="addCircuitRow()" style="margin-top: 1rem; background: var(--success); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">+ Add Circuit Row</button>
+        </div>
+
+        <!-- Schedule of Test Results -->
+        <div class="form-section">
+            <h2 class="section-title">Schedule of Test Results</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>DB Reference</label>
+                    <input type="text" placeholder="e.g., DB1">
+                </div>
+                <div class="form-group">
+                    <label>Tested By Name (CAPITALS)</label>
+                    <input type="text" placeholder="Inspector name" style="text-transform: uppercase;">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>Signature</label>
+                    <input type="text" placeholder="Signature">
+                </div>
+            </div>
+
+            <div class="form-grid" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>Zdb (Ω)</label>
+                    <input type="text" placeholder="Impedance">
+                </div>
+                <div class="form-group">
+                    <label>Ipf (kA)</label>
+                    <input type="text" placeholder="Fault current">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600;">Confirmations</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="confirm-polarity">
+                    <label for="confirm-polarity">Correct Polarity Confirmed</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="confirm-phase">
+                    <label for="confirm-phase">Phase Sequence Confirmed</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-operational">
+                    <label for="spd-operational">SPD Operational Status Confirmed</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spd-na-test">
+                    <label for="spd-na-test">N/A</label>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600;">Test Instrument Details</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Continuity</label>
+                    <input type="text" placeholder="Instrument details">
+                </div>
+                <div class="form-group">
+                    <label>Insulation Resistance</label>
+                    <input type="text" placeholder="Instrument details">
+                </div>
+                <div class="form-group">
+                    <label>Earth Fault Loop Impedance</label>
+                    <input type="text" placeholder="Instrument details">
+                </div>
+                <div class="form-group">
+                    <label>RCD</label>
+                    <input type="text" placeholder="Instrument details">
+                </div>
+            </div>
+
+            <div class="schedule-info" style="margin-top: 1.5rem;">
+                <h4>Test Results Table</h4>
+                <p>Record test results for each circuit. Add rows as needed.</p>
+            </div>
+
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table id="testResultsTable" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: var(--primary); color: white;">
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 50px;">Circuit No.</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 70px;">r₁ (Ω)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 70px;">rn (Ω)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 70px;">r₂ (Ω)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 80px;">R₁+R₂ (Ω)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 80px;">Insulation Resistance (MΩ)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 80px;">Test Voltage (V)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 70px;">Zs (Ω)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 90px;">RCD Time (ms)</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 80px;">Polarity</th>
+                            <th style="padding: 0.5rem; border: 1px solid var(--border); min-width: 60px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testResultsTableBody">
+                        <tr>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);"><input type="text" style="width: 100%; border: none; padding: 0.25rem;"></td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border);">
+                                <select style="width: 100%; border: none; padding: 0.25rem;">
+                                    <option value="">-</option>
+                                    <option value="✓">✓</option>
+                                </select>
+                            </td>
+                            <td style="padding: 0.5rem; border: 1px solid var(--border); text-align: center;">
+                                <button type="button" onclick="deleteTestRow(this)" style="background: var(--accent); color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">✕</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" onclick="addTestRow()" style="margin-top: 1rem; background: var(--success); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">+ Add Test Result Row</button>
+        </div>
+
+        <!-- Schedule of Inspections -->
+        <div class="form-section">
+            <h2 class="section-title">Schedule of Inspections</h2>
+            <div class="schedule-info">
+                <h4>Important Notice</h4>
+                <p>All relevant inspections must be completed and recorded. Mark each item as completed (✓) or Not Applicable (N/A).</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">1.0 Condition of Consumer's Intake Equipment</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection1" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection1" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">2.0 Parallel or Switched Alternative Sources</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection2" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection2" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">3.0 Automatic Disconnection of Supply (ADS)</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection3" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection3" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">4.0 Basic Protection</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection4" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection4" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">5.0 Protective Measures Other Than ADS</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection5" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection5" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">6.0 Additional Protection</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection6" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection6" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">7.0 Distribution Equipment</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection7" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection7" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">8.0 Circuits (Distribution and Final)</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection8" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection8" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">9.0 Isolation and Switching</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection9" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection9" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">10.0 Current-Using Equipment</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection10" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection10" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">11.0 Identification and Notices</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection11" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection11" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">12.0 Locations with Bath or Shower</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection12" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection12" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">13.0 Other Special Installations or Locations</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection13" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection13" value="N/A"> N/A</label>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid var(--border); border-radius: 8px; padding: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent);">14.0 Prosumer's Low Voltage Installations</h4>
+                    <div style="display: flex; gap: 1rem;">
+                        <label><input type="radio" name="inspection14" value="✓"> ✓</label>
+                        <label><input type="radio" name="inspection14" value="N/A"> N/A</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedules Summary -->
+        <div class="form-section">
+            <h2 class="section-title">Schedules Summary</h2>
+            <div class="schedule-info">
+                <h4>Important Notice</h4>
+                <p>This Certificate is valid only when accompanied by Schedule(s) of Circuit Details and Test Results.</p>
+                <p>The Schedule of Inspections must also be completed to confirm that all relevant inspections have been carried out.</p>
+            </div>
+            <div class="form-group">
+                <label>Total Number of Schedule Pages</label>
+                <input type="number" placeholder="Enter total pages" min="1">
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button>
+            <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+            <button type="button" class="btn-primary" onclick="saveForm()">Save Data</button>
+        </div>
+    </div>
+
+    <script>
+        // Add a new circuit row
+        function addCircuitRow() {
+            const tbody = document.getElementById('circuitTableBody');
+            const newRow = tbody.rows[0].cloneNode(true);
+            
+            // Clear all inputs in the new row
+            newRow.querySelectorAll('input, select').forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+            
+            tbody.appendChild(newRow);
+        }
+
+        // Delete a circuit row
+        function deleteRow(button) {
+            const tbody = document.getElementById('circuitTableBody');
+            if (tbody.rows.length > 1) {
+                button.closest('tr').remove();
+            } else {
+                alert('Cannot delete the last row. At least one row must remain.');
+            }
+        }
+
+        // Add a new test result row
+        function addTestRow() {
+            const tbody = document.getElementById('testResultsTableBody');
+            const newRow = tbody.rows[0].cloneNode(true);
+            
+            // Clear all inputs in the new row
+            newRow.querySelectorAll('input, select').forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+            
+            tbody.appendChild(newRow);
+        }
+
+        // Delete a test result row
+        function deleteTestRow(button) {
+            const tbody = document.getElementById('testResultsTableBody');
+            if (tbody.rows.length > 1) {
+                button.closest('tr').remove();
+            } else {
+                alert('Cannot delete the last row. At least one row must remain.');
+            }
+        }
+
+        // Save form data to localStorage
+        function saveForm() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach((input, index) => {
+                const key = input.id || input.name || `input_${index}`;
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    formData[key] = input.checked;
+                } else {
+                    formData[key] = input.value;
+                }
+            });
+            
+            // Save table data
+            formData.circuitTableRows = document.getElementById('circuitTableBody').rows.length;
+            formData.testResultsTableRows = document.getElementById('testResultsTableBody').rows.length;
+            
+            localStorage.setItem('bs7671_form_data', JSON.stringify(formData));
+            alert('Form data saved successfully!');
+        }
+
+        // Load form data from localStorage
+        function loadForm() {
+            const savedData = localStorage.getItem('bs7671_form_data');
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                
+                // Add extra rows if needed
+                if (formData.circuitTableRows) {
+                    const tbody = document.getElementById('circuitTableBody');
+                    while (tbody.rows.length < formData.circuitTableRows) {
+                        addCircuitRow();
+                    }
+                }
+                
+                if (formData.testResultsTableRows) {
+                    const tbody = document.getElementById('testResultsTableBody');
+                    while (tbody.rows.length < formData.testResultsTableRows) {
+                        addTestRow();
+                    }
+                }
+                
+                // Restore form values
+                Object.keys(formData).forEach(key => {
+                    const input = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        if (input.type === 'checkbox' || input.type === 'radio') {
+                            input.checked = formData[key];
+                        } else {
+                            input.value = formData[key];
+                        }
+                    }
+                });
+            }
+        }
+
+        // Clear form
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all form data?')) {
+                document.querySelectorAll('input, textarea, select').forEach(input => {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = false;
+                    } else {
+                        input.value = '';
+                    }
+                });
+                
+                // Reset tables to one row
+                const circuitTbody = document.getElementById('circuitTableBody');
+                while (circuitTbody.rows.length > 1) {
+                    circuitTbody.deleteRow(-1);
+                }
+                
+                const testTbody = document.getElementById('testResultsTableBody');
+                while (testTbody.rows.length > 1) {
+                    testTbody.deleteRow(-1);
+                }
+                
+                localStorage.removeItem('bs7671_form_data');
+                alert('Form cleared successfully!');
+            }
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(() => {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            let hasData = false;
+            
+            inputs.forEach(input => {
+                if (input.value || input.checked) {
+                    hasData = true;
+                }
+            });
+            
+            if (hasData) {
+                const formData = {};
+                inputs.forEach((input, index) => {
+                    const key = input.id || input.name || `input_${index}`;
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        formData[key] = input.checked;
+                    } else {
+                        formData[key] = input.value;
+                    }
+                });
+                
+                formData.circuitTableRows = document.getElementById('circuitTableBody').rows.length;
+                formData.testResultsTableRows = document.getElementById('testResultsTableBody').rows.length;
+                
+                localStorage.setItem('bs7671_form_data', JSON.stringify(formData));
+            }
+        }, 30000);
+
+        // Load saved data on page load
+        window.addEventListener('load', loadForm);
+    </script>
+</body>
+</html>
